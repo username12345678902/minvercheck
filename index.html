@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>def not made with ai</title>
+    <style>
+        body { background-color: #1a1a1a; color: #ffffff; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .console-log { width: 80%; max-width: 600px; margin: 20px auto; padding: 15px; background: #000; border: 1px solid #00ff00; text-align: left; font-family: monospace; color: #00ff00; height: 200px; overflow-y: scroll; }
+        button { background-color: #00ff00; color: black; font-weight: bold; padding: 10px 20px; border: none; cursor: pointer; }
+        button:hover { background-color: #00cc00; }
+    </style>
+</head>
+<body>
+
+    <h1>PS3 Factory MinVer Memory Tool</h1>
+    <p>Initialize memory layout to inspect system flash values.</p>
+    
+    <button onclick="initExploit()">Start</button>
+
+    <div class="console-log" id="logBox">
+        [System Info]: Ready. Press "Start" to initialize layout hooks...<br>
+    </div>
+
+    <!-- The external payload script that handles heavy lifting ROP structures -->
+    <script src="exploit_payload.js"></script>
+    
+    <script>
+        function log(message) {
+            var logBox = document.getElementById("logBox");
+            logBox.innerHTML += "[*] " + message + "<br>";
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        function initExploit() {
+            log("Clearing local heap memory structures...");
+            // Standard webkit spray sequence initialization
+            try {
+                if (typeof triggerMemoryExploit === "function") {
+                    log("Payload detected. Attempting stack allocation...");
+                    triggerMemoryExploit();
+                } else {
+                    log("Error: exploit_payload.js script assets missing.");
+                }
+            } catch(e) {
+                log("Exception triggered: " + e.message);
+            }
+        }
+    </script>
+</body>
+</html>
