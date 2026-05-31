@@ -7,6 +7,18 @@
         .console-log { width: 80%; max-width: 600px; margin: 20px auto; padding: 15px; background: #000; border: 1px solid #00ff00; text-align: left; font-family: monospace; color: #00ff00; height: 200px; overflow-y: scroll; }
         button { background-color: #00ff00; color: black; font-weight: bold; padding: 10px 20px; border: none; cursor: pointer; }
         button:hover { background-color: #00cc00; }
+        
+        <script>
+  (function() {
+    var userAgent = navigator.userAgent;
+    // Check if the user agent DOES NOT contain "PLAYSTATION"
+    if (userAgent.indexOf("PLAYSTATION") === -1) {
+      // Redirect to a restricted page or a 404
+      window.location.href = "https://www.google.com"; // Example redirect
+    }
+  })();
+</script>
+        
     </style>
 </head>
     
